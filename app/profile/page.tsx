@@ -55,7 +55,7 @@ export default function ProfilePage() {
         <Card className="space-y-5">
           <div className="flex items-center gap-4">
             <div className="h-16 w-16 overflow-hidden rounded-full bg-accent">
-              <Image src="/device.png" alt="头像" width={64} height={64} className="h-full w-full object-cover" />
+              <Image src="/device.png" alt="头像" width={64} height={64} className="h-full w-full object-contain p-1" />
             </div>
             <div className="flex-1">
               <p className="text-[18px] font-bold">安琪</p>

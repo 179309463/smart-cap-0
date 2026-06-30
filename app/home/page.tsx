@@ -25,7 +25,7 @@ export default function HomePage() {
       <header className="flex items-center justify-between px-5 pb-2 pt-4">
         <div className="flex items-center gap-3">
           <div className="h-11 w-11 overflow-hidden rounded-full bg-accent">
-            <Image src="/device.png" alt="头像" width={44} height={44} className="h-full w-full object-cover" />
+            <Image src="/device.png" alt="头像" width={44} height={44} className="h-full w-full object-contain p-1" />
           </div>
           <div>
             <p className="text-[13px] text-muted-foreground">下午好，安琪</p>
