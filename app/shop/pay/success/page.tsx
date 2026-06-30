@@ -39,7 +39,7 @@ export default function PaySuccessPage() {
       <BottomBar>
         <div className="space-y-3">
           <GoldButton onClick={() => router.push("/profile")}>查看我的订单</GoldButton>
-          <OutlineButton onClick={() => router.push("/")}>返回首页</OutlineButton>
+          <OutlineButton onClick={() => router.push("/home")}>返回首页</OutlineButton>
         </div>
       </BottomBar>
     </AppShell>

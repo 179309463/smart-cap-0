@@ -40,7 +40,7 @@ export default function BindSuccessPage() {
       <BottomBar>
         <div className="space-y-3">
           <GoldButton onClick={() => router.push('/care/goal')}>定制护理计划</GoldButton>
-          <OutlineButton onClick={() => router.push('/')}>进入首页</OutlineButton>
+          <OutlineButton onClick={() => router.push('/home')}>进入首页</OutlineButton>
         </div>
       </BottomBar>
     </AppShell>

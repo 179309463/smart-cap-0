@@ -41,7 +41,7 @@ export default function BindFailPage() {
       <BottomBar>
         <div className="space-y-3">
           <GoldButton onClick={() => router.push('/bind/scan')}>重新连接</GoldButton>
-          <OutlineButton onClick={() => router.push('/')}>稍后再说</OutlineButton>
+          <OutlineButton onClick={() => router.push('/home')}>稍后再说</OutlineButton>
         </div>
       </BottomBar>
     </AppShell>

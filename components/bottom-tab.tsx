@@ -6,7 +6,7 @@ import { Home, HeartPulse, ScanLine, Store, User } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const TABS = [
-  { href: '/', label: '首页', icon: Home },
+  { href: '/home', label: '首页', icon: Home },
   { href: '/care', label: '护理', icon: HeartPulse },
   { href: '/detect', label: '检测', icon: ScanLine },
   { href: '/shop', label: '商城', icon: Store },
@@ -22,7 +22,7 @@ export function BottomTab({ active }: { active?: string }) {
       <ul className="mx-auto flex max-w-[430px] items-center justify-around px-2 pb-5 pt-2">
         {TABS.map((tab) => {
           const isActive =
-            tab.href === '/' ? current === '/' : current.startsWith(tab.href)
+            tab.href === '/home' ? current === '/home' : current.startsWith(tab.href)
           const Icon = tab.icon
           return (
             <li key={tab.href}>
