@@ -102,7 +102,7 @@ export default function CarePage() {
           <div className="mt-3 space-y-3">
             {careModes.map((mode, i) => (
               <Link key={mode.id} href="/care/session">
-                <Card className="flex items-center gap-4">
+                <Card className={`flex items-center gap-4 ${i < 2 ? "mb-2.5" : ""}`}>
                   <IconChip color={["orange", "blue", "mint"][i]} size="lg">
                     <Sparkles className="h-6 w-6" />
                   </IconChip>
