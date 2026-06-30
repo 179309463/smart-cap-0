@@ -91,21 +91,32 @@ export default function ReportPage() {
 
         {/* 建议 */}
         <h2 className="mb-3 mt-6 text-[16px] font-semibold">护理建议</h2>
-        <Card className="space-y-3">
-          <div className="flex items-start gap-3">
-            <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
-            <p className="text-[14px] leading-relaxed text-foreground">
-              建议采用「深层清洁」模式控油，每周 3-4 次，搭配头皮舒缓精华液改善水油平衡。
-            </p>
-          </div>
-          <Link
-            href="/detect/trend"
-            className="flex items-center gap-2 rounded-2xl bg-[#faf6ef] px-4 py-3 text-[13px] text-gold"
-          >
-            <TrendingUp className="h-4 w-4" /> 查看历史趋势对比
-            <ChevronRight className="ml-auto h-4 w-4" />
+        <div className="space-y-3">
+          <Link href="/care/plan/confirm">
+            <Card className="mb-2.5 flex items-start gap-3">
+              <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
+              <p className="text-[14px] leading-relaxed text-foreground">
+                建议采用「深层清洁」模式控油，每周 3-4 次，搭配头皮舒缓精华液改善水油平衡。
+              </p>
+            </Card>
           </Link>
-        </Card>
+          <Link href="/detect/trend">
+            <Card className="mb-2.5 flex items-center gap-2 rounded-2xl bg-[#faf6ef] px-4 py-3 text-[13px] text-gold">
+              <TrendingUp className="h-4 w-4" /> 查看历史趋势对比
+              <ChevronRight className="ml-auto h-4 w-4" />
+            </Card>
+          </Link>
+          <Link href="/shop">
+            <Card className="mb-2.5 flex items-center gap-3">
+              <ShoppingBag className="h-5 w-5 shrink-0 text-gold" />
+              <div className="flex-1">
+                <p className="text-[15px] font-semibold">选购护理液</p>
+                <p className="mt-0.5 text-[13px] text-muted-foreground">针对性改善头皮问题</p>
+              </div>
+              <ChevronRight className="h-4 w-4 text-muted-foreground" />
+            </Card>
+          </Link>
+        </div>
       </div>
 
       <BottomBar>
