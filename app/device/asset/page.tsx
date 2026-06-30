@@ -46,7 +46,7 @@ export default function DeviceAssetPage() {
 
           <div className="mt-4 grid grid-cols-3 gap-2">
             <ChipBtn icon={<Pencil className="h-4 w-4" />} label="重命名" />
-            <ChipBtn icon={<RefreshCw className="h-4 w-4" />} label="固件升级" tone="gold" onClick={() => router.push('/ota')} />
+            <ChipBtn icon={<RefreshCw className="h-4 w-4" />} label="固件升级" tone="gold" onClick={() => router.push('/device/ota')} />
             <ChipBtn icon={<Unlink className="h-4 w-4" />} label="解绑" tone="red" onClick={() => router.push('/bind/fail')} />
           </div>
         </div>
