@@ -13,6 +13,27 @@ export default function LoginPage() {
   const [code, setCode] = useState('')
   const [agreed, setAgreed] = useState(false)
   const [sent, setSent] = useState(false)
+  const [touched, setTouched] = useState(false)
+
+  // 中国大陆手机号：1 开头的 11 位数字
+  const phoneValid = /^1[3-9]\d{9}$/.test(phone)
+  const codeValid = code.length >= 4
+  const showPhoneError = touched && phone.length > 0 && !phoneValid
+  const canLogin = phoneValid && codeValid && agreed
+
+  const handlePhoneChange = (value: string) => {
+    // 仅保留数字，最多 11 位
+    const digits = value.replace(/\D/g, '').slice(0, 11)
+    setPhone(digits)
+  }
+
+  const handleSendCode = () => {
+    if (!phoneValid) {
+      setTouched(true)
+      return
+    }
+    setSent(true)
+  }
 
   return (
     <AppShell>
@@ -26,29 +47,45 @@ export default function LoginPage() {
         </div>
 
         <div className="space-y-4">
-          <label className="flex items-center gap-3 rounded-2xl border border-[#ece0cd] bg-white px-4 py-4">
-            <Phone className="h-5 w-5 text-muted-foreground" />
-            <input
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              inputMode="numeric"
-              placeholder="请输入手机号"
-              className="flex-1 bg-transparent text-[15px] outline-none placeholder:text-muted-foreground"
-            />
-          </label>
+          <div>
+            <label
+              className={`flex items-center gap-3 rounded-2xl border bg-white px-4 py-4 ${
+                showPhoneError ? 'border-danger' : 'border-[#ece0cd]'
+              }`}
+            >
+              <Phone className={`h-5 w-5 ${showPhoneError ? 'text-danger' : 'text-muted-foreground'}`} />
+              <input
+                value={phone}
+                onChange={(e) => handlePhoneChange(e.target.value)}
+                onBlur={() => setTouched(true)}
+                inputMode="numeric"
+                maxLength={11}
+                placeholder="请输入手机号"
+                className="flex-1 bg-transparent text-[15px] outline-none placeholder:text-muted-foreground"
+              />
+            </label>
+            {showPhoneError && (
+              <p className="mt-1.5 px-1 text-[12px] text-danger">请输入正确的 11 位手机号</p>
+            )}
+          </div>
+
           <div className="flex items-center gap-3 rounded-2xl border border-[#ece0cd] bg-white px-4 py-4">
             <ShieldCheck className="h-5 w-5 text-muted-foreground" />
             <input
               value={code}
-              onChange={(e) => setCode(e.target.value)}
+              onChange={(e) => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
               inputMode="numeric"
+              maxLength={6}
               placeholder="请输入验证码"
               className="flex-1 bg-transparent text-[15px] outline-none placeholder:text-muted-foreground"
             />
             <button
               type="button"
-              onClick={() => setSent(true)}
-              className="text-[13px] font-medium text-gold"
+              onClick={handleSendCode}
+              disabled={!phoneValid || sent}
+              className={`text-[13px] font-medium ${
+                !phoneValid || sent ? 'text-muted-foreground' : 'text-gold'
+              }`}
             >
               {sent ? '60s 后重发' : '获取验证码'}
             </button>
@@ -70,7 +107,13 @@ export default function LoginPage() {
         </label>
 
         <div className="mt-8">
-          <GoldButton onClick={() => router.push('/bind/permissions')}>登录 / 注册</GoldButton>
+          <GoldButton
+            onClick={() => router.push('/bind/permissions')}
+            disabled={!canLogin}
+            className={!canLogin ? 'opacity-50' : ''}
+          >
+            登录 / 注册
+          </GoldButton>
         </div>
 
         <button
